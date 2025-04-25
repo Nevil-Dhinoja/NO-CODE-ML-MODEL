@@ -26,7 +26,7 @@ def show_correlation_heatmap(df):
     sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f")
     st.pyplot(plt.gcf())
     plt.clf()
-
+    
 def show_distribution(df):
     st.subheader("📊 Distribution Plots (Numerical)")
     numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
@@ -35,6 +35,7 @@ def show_distribution(df):
         fig, ax = plt.subplots()
         sns.histplot(df[col].dropna(), kde=True, ax=ax)
         st.pyplot(fig)
+        plt.close(fig)
 
 def show_categorical_counts(df):
     st.subheader("🔠 Count Plots (Categorical)")
@@ -45,3 +46,4 @@ def show_categorical_counts(df):
         sns.countplot(data=df, x=col, ax=ax)
         plt.xticks(rotation=30)
         st.pyplot(fig)
+        plt.close(fig)

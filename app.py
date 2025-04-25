@@ -66,8 +66,9 @@ if uploaded_file is not None:
 
     # Encode Categorical Columns
     st.subheader("🔤 Encode Categorical Columns")
-    encode_option = st.selectbox("Choose encoding method", ['label', 'onehot'])
-    df = preprocess.encode_categoricals(df, method=encode_option)
+    max_classes = st.slider("Max Unique Values for One-Hot Encoding", 2, 50, 10)  
+    df = preprocess.encode_categoricals(df, max_onehot_classes=max_classes)
+
 
     # Scale Numerical Features
     st.subheader("📏 Scale Numerical Features")

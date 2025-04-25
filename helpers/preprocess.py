@@ -16,20 +16,26 @@ def handle_missing_values(df, method='drop', fill_value=None):
         df_cleaned = df.copy()
     return df_cleaned
 
-def encode_categoricals(df, method='label'):
+def encode_categoricals(df, max_onehot_classes=10):
+    """Smart encoding: One-hot small categoricals, LabelEncode large categoricals."""
+    
     df_encoded = df.copy()
-    cat_cols = df.select_dtypes(include=['object']).columns
+    cat_cols = df_encoded.select_dtypes(include=['object', 'category']).columns
 
-    if method == 'label':
-        for col in cat_cols:
-            df_encoded[col] = LabelEncoder().fit_transform(df_encoded[col].astype(str))
-    elif method == 'onehot':
-        df_encoded = pd.get_dummies(df_encoded, columns=cat_cols, drop_first=True)
+    for col in cat_cols:
+        unique_values = df_encoded[col].nunique()
 
+        if unique_values <= max_onehot_classes:
+            # One-Hot Encode
+            df_encoded = pd.get_dummies(df_encoded, columns=[col], drop_first=True)
+        else:
+            # Label Encode after converting fully to string
+            df_encoded[col] = df_encoded[col].astype(str)
+            le = LabelEncoder()
+            df_encoded[col] = le.fit_transform(df_encoded[col])
+    
     return df_encoded
 
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
-import pandas as pd
 
 def scale_numerical(df, method='standard'):
     df_scaled = df.copy()
