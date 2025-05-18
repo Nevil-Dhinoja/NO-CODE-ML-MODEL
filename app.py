@@ -1,8 +1,5 @@
-# app.py
-
 import streamlit as st
 import pandas as pd
-import numpy as np
 import helpers.eda as eda
 from helpers import preprocess
 
@@ -69,7 +66,6 @@ if uploaded_file is not None:
     max_classes = st.slider("Max Unique Values for One-Hot Encoding", 2, 50, 10)  
     df = preprocess.encode_categoricals(df, max_onehot_classes=max_classes)
 
-
     # Scale Numerical Features
     st.subheader("📏 Scale Numerical Features")
     scale_option = st.selectbox("Choose scaling method", ['none', 'standard', 'minmax'])
@@ -79,6 +75,9 @@ if uploaded_file is not None:
     # Show Transformed Data
     st.subheader("🧾 Transformed Data Preview")
     st.dataframe(df.head())
+
+    # Save cleaned data to session state for model training page
+    st.session_state["cleaned_data"] = df
 
     # Download Cleaned Data
     csv = df.to_csv(index=False).encode('utf-8')
