@@ -7,7 +7,7 @@ import seaborn as sns
 
 # Set plot theme
 sns.set_style("whitegrid")
-
+    
 def show_basic_info(df):
     st.subheader("📋 Descriptive Statistics")
     st.write(df.describe(include='all'))
