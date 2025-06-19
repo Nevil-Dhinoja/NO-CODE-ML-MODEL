@@ -140,7 +140,7 @@ if uploaded_file is not None:
     # Final CTA: Go to Model Training
     st.markdown("---")
     st.success("✅ Data preprocessed and ready for training!")
-    st.button("🚀 Go to Model Training"):
+    st.button("🚀 Go to Model Training")
     # st.switch_page("pages/3_model_trainer.py")
 else:
     st.info("📌 Please upload a CSV file to get started.")
