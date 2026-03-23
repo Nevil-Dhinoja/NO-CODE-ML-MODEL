@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=200&section=header&text=No-Code%20ML%20Model%20Builder&fontSize=40&fontColor=fff&fontAlignY=42&desc=Upload%20CSV%20%C2%B7%20Select%20Model%20%C2%B7%20Train%20%C2%B7%20Predict%20%E2%80%94%20No%20Code%20Required&descAlignY=65&descSize=14&descColor=fff&animation=twinkling" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=12,20,24&height=260&section=header&text=No-Code%20ML%20Model%20Builder&fontSize=65&fontColor=fff&fontAlignY=42&desc=Collaborative%20Project%20Management%20Platform%20for%20Developers&descAlignY=62&descSize=15&descColor=fff&animation=twinkling" width="100%"/>
+
 
 <br/>
 
